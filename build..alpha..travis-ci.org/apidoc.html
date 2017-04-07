@@ -1,0 +1,943 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/taijinlee/humanize"
+
+    >humanize (v0.0.9)</a>
+</h1>
+<h4>Javascript string formatter for human readability</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.humanize">module humanize</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.humanize.date">
+            function <span class="apidocSignatureSpan">humanize.</span>date
+            <span class="apidocSignatureSpan">(format, timestamp)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.humanize.filesize">
+            function <span class="apidocSignatureSpan">humanize.</span>filesize
+            <span class="apidocSignatureSpan">(filesize, kilo, decimals, decPoint, thousandsSep, suffixSep)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.humanize.intword">
+            function <span class="apidocSignatureSpan">humanize.</span>intword
+            <span class="apidocSignatureSpan">(number, units, kilo, decimals, decPoint, thousandsSep, suffixSep)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.humanize.linebreaks">
+            function <span class="apidocSignatureSpan">humanize.</span>linebreaks
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.humanize.naturalDay">
+            function <span class="apidocSignatureSpan">humanize.</span>naturalDay
+            <span class="apidocSignatureSpan">(timestamp, format)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.humanize.nl2br">
+            function <span class="apidocSignatureSpan">humanize.</span>nl2br
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.humanize.noConflict">
+            function <span class="apidocSignatureSpan">humanize.</span>noConflict
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.humanize.numberFormat">
+            function <span class="apidocSignatureSpan">humanize.</span>numberFormat
+            <span class="apidocSignatureSpan">(number, decimals, decPoint, thousandsSep)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.humanize.ordinal">
+            function <span class="apidocSignatureSpan">humanize.</span>ordinal
+            <span class="apidocSignatureSpan">(number)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.humanize.pad">
+            function <span class="apidocSignatureSpan">humanize.</span>pad
+            <span class="apidocSignatureSpan">(str, count, padChar, type)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.humanize.relativeTime">
+            function <span class="apidocSignatureSpan">humanize.</span>relativeTime
+            <span class="apidocSignatureSpan">(timestamp)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.humanize.time">
+            function <span class="apidocSignatureSpan">humanize.</span>time
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.humanize.truncatechars">
+            function <span class="apidocSignatureSpan">humanize.</span>truncatechars
+            <span class="apidocSignatureSpan">(string, length)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.humanize.truncatewords">
+            function <span class="apidocSignatureSpan">humanize.</span>truncatewords
+            <span class="apidocSignatureSpan">(string, numWords)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan"></span>humanize</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.humanize" id="apidoc.module.humanize">module humanize</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.humanize.date" id="apidoc.element.humanize.date">
+        function <span class="apidocSignatureSpan">humanize.</span>date
+        <span class="apidocSignatureSpan">(format, timestamp)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">date = function (format, timestamp) {
+  var jsdate = ((timestamp === undefined) ? new Date() : // Not provided
+                (timestamp instanceof Date) ? new Date(timestamp) : // JS Date()
+                new Date(timestamp * 1000) // UNIX timestamp (auto-convert to int)
+               );
+
+  var formatChr = /\\?([a-z])/gi;
+  var formatChrCb = function (t, s) {
+    return f[t] ? f[t]() : s;
+  };
+
+  var shortDayTxt = [&#x27;Sunday&#x27;, &#x27;Monday&#x27;, &#x27;Tuesday&#x27;, &#x27;Wednesday&#x27;, &#x27;Thursday&#x27;, &#x27;Friday&#x27;, &#x27;Saturday&#x27;];
+  var monthTxt = [&#x27;January&#x27;, &#x27;February&#x27;, &#x27;March&#x27;, &#x27;April&#x27;, &#x27;May&#x27;, &#x27;June&#x27;, &#x27;July&#x27;, &#x27;August&#x27;, &#x27;September&#x27;, &#x27;October&#x27;, &#x27;November&#x27;, &#x27;
+December&#x27;];
+
+  var f = {
+<span class="apidocCodeCommentSpan">    /* Day */
+</span>    // Day of month w/leading 0; 01..31
+    d: function () { return humanize.pad(f.j(), 2, &#x27;0&#x27;); },
+
+    // Shorthand day name; Mon..Sun
+    D: function () { return f.l().slice(0, 3); },
+
+    // Day of month; 1..31
+    j: function () { return jsdate.getDate(); },
+
+    // Full day name; Monday..Sunday
+    l: function () { return shortDayTxt[f.w()]; },
+
+    // ISO-8601 day of week; 1[Mon]..7[Sun]
+    N: function () { return f.w() || 7; },
+
+    // Ordinal suffix for day of month; st, nd, rd, th
+    S: function () {
+      var j = f.j();
+      return j &#x3e; 4 &#x26;&#x26; j &#x3c; 21 ? &#x27;th&#x27; : {1: &#x27;st&#x27;, 2: &#x27;nd&#x27;, 3: &#x27;rd&#x27;}[j % 10] || &#x27;th&#x27;;
+    },
+
+    // Day of week; 0[Sun]..6[Sat]
+    w: function () { return jsdate.getDay(); },
+
+    // Day of year; 0..365
+    z: function () {
+      return (f.L() ? dayTableLeap[f.n()] : dayTableCommon[f.n()]) + f.j() - 1;
+    },
+
+    /* Week */
+    // ISO-8601 week number
+    W: function () {
+      // days between midweek of this week and jan 4
+      // (f.z() - f.N() + 1 + 3.5) - 3
+      var midWeekDaysFromJan4 = f.z() - f.N() + 1.5;
+      // 1 + number of weeks + rounded week
+      return humanize.pad(1 + Math.floor(Math.abs(midWeekDaysFromJan4) / 7) + (midWeekDaysFromJan4 % 7 &#x3e; 3.5 ? 1 : 0), 2, &#x27;0&#x27;);
+    },
+
+    /* Month */
+    // Full month name; January..December
+    F: function () { return monthTxt[jsdate.getMonth()]; },
+
+    // Month w/leading 0; 01..12
+    m: function () { return humanize.pad(f.n(), 2, &#x27;0&#x27;); },
+
+    // Shorthand month name; Jan..Dec
+    M: function () { return f.F().slice(0, 3); },
+
+    // Month; 1..12
+    n: function () { return jsdate.getMonth() + 1; },
+
+    // Days in month; 28..31
+    t: function () { return (new Date(f.Y(), f.n(), 0)).getDate(); },
+
+    /* Year */
+    // Is leap year?; 0 or 1
+    L: function () { return new Date(f.Y(), 1, 29).getMonth() === 1 ? 1 : 0; },
+
+    // ISO-8601 year
+    o: function () {
+      var n = f.n();
+      var W = f.W();
+      return f.Y() + (n === 12 &#x26;&#x26; W &#x3c; 9 ? -1 : n === 1 &#x26;&#x26; W &#x3e; 9);
+    },
+
+    // Full year; e.g. 1980..2010
+    Y: function () { return jsdate.getFullYear(); },
+
+    // Last two digits of year; 00..99
+    y: function () { return (String(f.Y())).slice(-2); },
+
+    /* Time */
+    // am or pm
+    a: function () { return jsdate.getHours() &#x3e; 11 ? &#x27;pm&#x27; : &#x27;am&#x27;; },
+
+    // AM or PM
+    A: function () { return f.a().toUpperCase(); },
+
+    // Swatch Internet time; 000..999
+    B: function () {
+      var unixTime = jsdate.getTime() / 1000;
+      var secondsPassedToday = unixTime % 86400 + 3600; // since it&#x27;s based off of UTC+1
+      if (secondsPassedToday &#x3c; 0) { secondsPassedToday += 86400; }
+      var beats = ((secondsPassedToday) / 86.4) % 1000;
+      if (unixTime &#x3c; 0) {
+        return Math.ceil(beats);
+      }
+      return Math.floor(beats);
+    },
+
+    // 12-Hours; 1..12
+    g: function () { return f.G() % 12 || 12; },
+
+    // 24-Hours; 0..23
+    G: function () { return jsdate.getHours(); },
+
+    // 12-Hours w/leading 0; 01..12
+    h: function () { return humanize.pad(f.g(), 2, &#x27;0&#x27;); },
+
+    // 24-Hours w/leading 0; 00..23
+    H: function () { return humanize.pad(f.G(), 2, &#x27;0&#x27;); },
+
+    // Minutes w/leading 0; 00..59
+    i: function () { return humanize.pad(jsdate.getMinutes(), 2, &#x27;0&#x27;); },
+
+    // Seconds w/leading 0; 00..59
+    s: function () { return humanize.pad(jsdate.getSeconds(), 2, &#x27;0&#x27;); },
+
+    // Microseconds; 000000-999000
+    u: function () { return humanize.pad(jsdate.getMillis ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Installation ##
+
+    npm install humanize
+
+## Usage: ##
+```javascript
+var humanize = require(&#x27;humanize&#x27;);
+humanize.<span class="apidocCodeKeywordSpan">date</span>(&#x27;Y-m-d&#x27;); // &#x27;yyyy-mm-dd&#x27;
+humanize.filesize(1234567890); // &#x27;1.15 Gb&#x27;
+```
+
+## Functions available: ##
+
+####humanize.noConflict()####
+Give control of the &#x22;humanize&#x22; variable back to its previous owner. Returns a reference to the humanize object.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.humanize.filesize" id="apidoc.element.humanize.filesize">
+        function <span class="apidocSignatureSpan">humanize.</span>filesize
+        <span class="apidocSignatureSpan">(filesize, kilo, decimals, decPoint, thousandsSep, suffixSep)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">filesize = function (filesize, kilo, decimals, decPoint, thousandsSep, suffixSep) {
+  kilo = (kilo === undefined) ? 1024 : kilo;
+  if (filesize &#x3c;= 0) { return &#x27;0 bytes&#x27;; }
+  if (filesize &#x3c; kilo &#x26;&#x26; decimals === undefined) { decimals = 0; }
+  if (suffixSep === undefined) { suffixSep = &#x27; &#x27;; }
+  return humanize.intword(filesize, [&#x27;bytes&#x27;, &#x27;KB&#x27;, &#x27;MB&#x27;, &#x27;GB&#x27;, &#x27;TB&#x27;, &#x27;PB&#x27;], kilo, decimals, decPoint, thousandsSep, suffixSep);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+    npm install humanize
+
+## Usage: ##
+```javascript
+var humanize = require(&#x27;humanize&#x27;);
+humanize.date(&#x27;Y-m-d&#x27;); // &#x27;yyyy-mm-dd&#x27;
+humanize.<span class="apidocCodeKeywordSpan">filesize</span>(1234567890); // &#x27;1.15 Gb&#x27;
+```
+
+## Functions available: ##
+
+####humanize.noConflict()####
+Give control of the &#x22;humanize&#x22; variable back to its previous owner. Returns a reference to the humanize object.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.humanize.intword" id="apidoc.element.humanize.intword">
+        function <span class="apidocSignatureSpan">humanize.</span>intword
+        <span class="apidocSignatureSpan">(number, units, kilo, decimals, decPoint, thousandsSep, suffixSep)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">intword = function (number, units, kilo, decimals, decPoint, thousandsSep, suffixSep) {
+  var humanized, unit;
+
+  units = units || [&#x27;&#x27;, &#x27;K&#x27;, &#x27;M&#x27;, &#x27;B&#x27;, &#x27;T&#x27;],
+  unit = units.length - 1,
+  kilo = kilo || 1000,
+  decimals = isNaN(decimals) ? 2 : Math.abs(decimals),
+  decPoint = decPoint || &#x27;.&#x27;,
+  thousandsSep = thousandsSep || &#x27;,&#x27;,
+  suffixSep = suffixSep || &#x27;&#x27;;
+
+  for (var i=0; i &#x3c; units.length; i++) {
+    if (number &#x3c; Math.pow(kilo, i+1)) {
+      unit = i;
+      break;
+    }
+  }
+  humanized = number / Math.pow(kilo, unit);
+
+  var suffix = units[unit] ? suffixSep + units[unit] : &#x27;&#x27;;
+  return humanize.numberFormat(humanized, decimals, decPoint, thousandsSep) + suffix;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * If value is 123456789, the output would be 117.7 MB.
+ */
+humanize.filesize = function(filesize, kilo, decimals, decPoint, thousandsSep, suffixSep) {
+  kilo = (kilo === undefined) ? 1024 : kilo;
+  if (filesize &#x3c;= 0) { return &#x27;0 bytes&#x27;; }
+  if (filesize &#x3c; kilo &#x26;&#x26; decimals === undefined) { decimals = 0; }
+  if (suffixSep === undefined) { suffixSep = &#x27; &#x27;; }
+  return humanize.<span class="apidocCodeKeywordSpan">intword</span>(filesize, [&#x27;bytes&#x27;, &#x27;KB&#x27;, &#x27;MB&#x27
+;, &#x27;GB&#x27;, &#x27;TB&#x27;, &#x27;PB&#x27;], kilo, decimals, decPoint, thousandsSep, suffixSep);
+};
+
+/**
+ * Formats the value like a &#x27;human-readable&#x27; number (i.e. &#x27;13 K&#x27;, &#x27;4.1 M&#x27;, &#x27;102&#x27;, etc).
+ *
+ * For example:
+ * If value is 123456789, the output would be 117.7 M.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.humanize.linebreaks" id="apidoc.element.humanize.linebreaks">
+        function <span class="apidocSignatureSpan">humanize.</span>linebreaks
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">linebreaks = function (str) {
+  // remove beginning and ending newlines
+  str = str.replace(/^([\n|\r]*)/, &#x27;&#x27;);
+  str = str.replace(/([\n|\r]*)$/, &#x27;&#x27;);
+
+  // normalize all to \n
+  str = str.replace(/(\r\n|\n|\r)/g, &#x22;\n&#x22;);
+
+  // any consecutive new lines more than 2 gets turned into p tags
+  str = str.replace(/(\n{2,})/g, &#x27;&#x3c;/p&#x3e;&#x3c;p&#x3e;&#x27;);
+
+  // any that are singletons get turned into br
+  str = str.replace(/\n/g, &#x27;&#x3c;br /&#x3e;&#x27;);
+  return &#x27;&#x3c;p&#x3e;&#x27; + str + &#x27;&#x3c;/p&#x3e;&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+####humanize.ordinal(integer)####
+Converts a number into its [ordinal representation](http://en.wikipedia.org/wiki/Ordinal_number_\(linguistics\)).
+
+####humanize.filesize(filesize [, kilo = 1024, decimals = 2, decPoint = &#x27;.&#x27;, thousandsSep = &#x27;,&#x27;]) ####
+Converts a byte count to a human readable value using kilo as the basis, and numberFormat formatting
+
+####humanize.<span class="apidocCodeKeywordSpan">linebreaks</span>(string)####
+Converts a string&#x27;s newlines into properly formatted html ie. one new line -&#x3e; br, two new lines -&#x3e; p, entire thing
+ wrapped in p
+
+####humanize.nl2br(string)####
+Converts a string&#x27;s newlines into br&#x27;s
+
+####humanize.truncatechars(string, length)####
+Truncates a string to length-1 and appends &#x27;…&#x27;. If string is shorter than length, then no-op
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.humanize.naturalDay" id="apidoc.element.humanize.naturalDay">
+        function <span class="apidocSignatureSpan">humanize.</span>naturalDay
+        <span class="apidocSignatureSpan">(timestamp, format)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">naturalDay = function (timestamp, format) {
+  timestamp = (timestamp === undefined) ? humanize.time() : timestamp;
+  format = (format === undefined) ? &#x27;Y-m-d&#x27; : format;
+
+  var oneDay = 86400;
+  var d = new Date();
+  var today = (new Date(d.getFullYear(), d.getMonth(), d.getDate())).getTime() / 1000;
+
+  if (timestamp &#x3c; today &#x26;&#x26; timestamp &#x3e;= today - oneDay) {
+    return &#x27;yesterday&#x27;;
+  } else if (timestamp &#x3e;= today &#x26;&#x26; timestamp &#x3c; today + oneDay) {
+    return &#x27;today&#x27;;
+  } else if (timestamp &#x3e;= today + oneDay &#x26;&#x26; timestamp &#x3c; today + 2 * oneDay) {
+    return &#x27;tomorrow&#x27;;
+  }
+
+  return humanize.date(format, timestamp);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+####humanize.date(format [, timestamp / JS Date Object = new Date()])####
+This is a port of [php.js date](http://phpjs.org/functions/date:380) and behaves exactly like [PHP&#x27;s date](http://php.net/manual
+/en/function.date.php)
+
+####humanize.numberFormat(number [, decimals = 2, decPoint = &#x27;.&#x27;, thousandsSep = &#x27;,&#x27;])####
+Format a number to have decimal significant decimal places, using decPoint as the decimal separator, and thousandsSep as thousands
+ separater
+
+####humanize.<span class="apidocCodeKeywordSpan">naturalDay</span>(timestamp [, format = &#x27;Y-m-d&#x27;])####
+Returns &#x27;today&#x27;, &#x27;tomorrow&#x27; or &#x27;yesterday&#x27;, as appropriate, otherwise format the date using the passed
+ format with humanize.date()
+
+####humanize.relativeTime(timestamp)####
+Returns a relative time to the current time, seconds as the most granular up to years to the least granular.
+
+####humanize.ordinal(integer)####
+Converts a number into its [ordinal representation](http://en.wikipedia.org/wiki/Ordinal_number_\(linguistics\)).
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.humanize.nl2br" id="apidoc.element.humanize.nl2br">
+        function <span class="apidocSignatureSpan">humanize.</span>nl2br
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">nl2br = function (str) {
+  return str.replace(/(\r\n|\n|\r)/g, &#x27;&#x3c;br /&#x3e;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+####humanize.filesize(filesize [, kilo = 1024, decimals = 2, decPoint = &#x27;.&#x27;, thousandsSep = &#x27;,&#x27;]) ####
+Converts a byte count to a human readable value using kilo as the basis, and numberFormat formatting
+
+####humanize.linebreaks(string)####
+Converts a string&#x27;s newlines into properly formatted html ie. one new line -&#x3e; br, two new lines -&#x3e; p, entire thing
+ wrapped in p
+
+####humanize.<span class="apidocCodeKeywordSpan">nl2br</span>(string)####
+Converts a string&#x27;s newlines into br&#x27;s
+
+####humanize.truncatechars(string, length)####
+Truncates a string to length-1 and appends &#x27;…&#x27;. If string is shorter than length, then no-op
+
+####humanize.truncatewords(string, numWords)####
+Truncates a string to only include the first numWords words and appends &#x27;…&#x27;. If string has fewer words than newWords,
+then no-op
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.humanize.noConflict" id="apidoc.element.humanize.noConflict">
+        function <span class="apidocSignatureSpan">humanize.</span>noConflict
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">noConflict = function () {
+  root.humanize = previousHumanize;
+  return this;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var humanize = require(&#x27;humanize&#x27;);
+humanize.date(&#x27;Y-m-d&#x27;); // &#x27;yyyy-mm-dd&#x27;
+humanize.filesize(1234567890); // &#x27;1.15 Gb&#x27;
+```
+
+## Functions available: ##
+
+####humanize.<span class="apidocCodeKeywordSpan">noConflict</span>()####
+Give control of the &#x22;humanize&#x22; variable back to its previous owner. Returns a reference to the humanize object.
+
+####humanize.time()####
+Retrieves the current time in seconds
+
+####humanize.date(format [, timestamp / JS Date Object = new Date()])####
+This is a port of [php.js date](http://phpjs.org/functions/date:380) and behaves exactly like [PHP&#x27;s date](http://php.net/manual
+/en/function.date.php)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.humanize.numberFormat" id="apidoc.element.humanize.numberFormat">
+        function <span class="apidocSignatureSpan">humanize.</span>numberFormat
+        <span class="apidocSignatureSpan">(number, decimals, decPoint, thousandsSep)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">numberFormat = function (number, decimals, decPoint, thousandsSep) {
+  decimals = isNaN(decimals) ? 2 : Math.abs(decimals);
+  decPoint = (decPoint === undefined) ? &#x27;.&#x27; : decPoint;
+  thousandsSep = (thousandsSep === undefined) ? &#x27;,&#x27; : thousandsSep;
+
+  var sign = number &#x3c; 0 ? &#x27;-&#x27; : &#x27;&#x27;;
+  number = Math.abs(+number || 0);
+
+  var intPart = parseInt(number.toFixed(decimals), 10) + &#x27;&#x27;;
+  var j = intPart.length &#x3e; 3 ? intPart.length % 3 : 0;
+
+  return sign + (j ? intPart.substr(0, j) + thousandsSep : &#x27;&#x27;) + intPart.substr(j).replace(/(\d{3})(?=\d)/g, &#x27;$1&#x27; + thousandsSep
+) + (decimals ? decPoint + Math.abs(number - intPart).toFixed(decimals).slice(2) : &#x27;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+####humanize.time()####
+Retrieves the current time in seconds
+
+####humanize.date(format [, timestamp / JS Date Object = new Date()])####
+This is a port of [php.js date](http://phpjs.org/functions/date:380) and behaves exactly like [PHP&#x27;s date](http://php.net/manual
+/en/function.date.php)
+
+####humanize.<span class="apidocCodeKeywordSpan">numberFormat</span>(number [, decimals = 2, decPoint = &#x27;.&#x27;, thousandsSep
+ = &#x27;,&#x27;])####
+Format a number to have decimal significant decimal places, using decPoint as the decimal separator, and thousandsSep as thousands
+ separater
+
+####humanize.naturalDay(timestamp [, format = &#x27;Y-m-d&#x27;])####
+Returns &#x27;today&#x27;, &#x27;tomorrow&#x27; or &#x27;yesterday&#x27;, as appropriate, otherwise format the date using the passed
+ format with humanize.date()
+
+####humanize.relativeTime(timestamp)####
+Returns a relative time to the current time, seconds as the most granular up to years to the least granular.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.humanize.ordinal" id="apidoc.element.humanize.ordinal">
+        function <span class="apidocSignatureSpan">humanize.</span>ordinal
+        <span class="apidocSignatureSpan">(number)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ordinal = function (number) {
+  number = parseInt(number, 10);
+  number = isNaN(number) ? 0 : number;
+  var sign = number &#x3c; 0 ? &#x27;-&#x27; : &#x27;&#x27;;
+  number = Math.abs(number);
+  var tens = number % 100;
+
+  return sign + number + (tens &#x3e; 4 &#x26;&#x26; tens &#x3c; 21 ? &#x27;th&#x27; : {1: &#x27;st&#x27;, 2: &#x27;nd&#x27;, 3: &#x27;rd&#x27;}[number % 10] || &#x27;th&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+####humanize.naturalDay(timestamp [, format = &#x27;Y-m-d&#x27;])####
+Returns &#x27;today&#x27;, &#x27;tomorrow&#x27; or &#x27;yesterday&#x27;, as appropriate, otherwise format the date using the passed
+ format with humanize.date()
+
+####humanize.relativeTime(timestamp)####
+Returns a relative time to the current time, seconds as the most granular up to years to the least granular.
+
+####humanize.<span class="apidocCodeKeywordSpan">ordinal</span>(integer)####
+Converts a number into its [ordinal representation](http://en.wikipedia.org/wiki/Ordinal_number_\(linguistics\)).
+
+####humanize.filesize(filesize [, kilo = 1024, decimals = 2, decPoint = &#x27;.&#x27;, thousandsSep = &#x27;,&#x27;]) ####
+Converts a byte count to a human readable value using kilo as the basis, and numberFormat formatting
+
+####humanize.linebreaks(string)####
+Converts a string&#x27;s newlines into properly formatted html ie. one new line -&#x3e; br, two new lines -&#x3e; p, entire thing
+ wrapped in p
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.humanize.pad" id="apidoc.element.humanize.pad">
+        function <span class="apidocSignatureSpan">humanize.</span>pad
+        <span class="apidocSignatureSpan">(str, count, padChar, type)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">pad = function (str, count, padChar, type) {
+  str += &#x27;&#x27;;
+  if (!padChar) {
+    padChar = &#x27; &#x27;;
+  } else if (padChar.length &#x3e; 1) {
+    padChar = padChar.charAt(0);
+  }
+  type = (type === undefined) ? &#x27;left&#x27; : &#x27;right&#x27;;
+
+  if (type === &#x27;right&#x27;) {
+    while (str.length &#x3c; count) {
+      str = str + padChar;
+    }
+  } else {
+    // default to left
+    while (str.length &#x3c; count) {
+      str = padChar + str;
+    }
+  }
+
+  return str;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+    var shortDayTxt = [&#x27;Sunday&#x27;, &#x27;Monday&#x27;, &#x27;Tuesday&#x27;, &#x27;Wednesday&#x27;, &#x27;Thursday&#x27;, &#
+x27;Friday&#x27;, &#x27;Saturday&#x27;];
+    var monthTxt = [&#x27;January&#x27;, &#x27;February&#x27;, &#x27;March&#x27;, &#x27;April&#x27;, &#x27;May&#x27;, &#x27;June
+&#x27;, &#x27;July&#x27;, &#x27;August&#x27;, &#x27;September&#x27;, &#x27;October&#x27;, &#x27;November&#x27;, &#x27;December&#
+x27;];
+
+    var f = {
+/* Day */
+// Day of month w/leading 0; 01..31
+d: function () { return humanize.<span class="apidocCodeKeywordSpan">pad</span>(f.j(), 2, &#x27;0&#x27;); },
+
+// Shorthand day name; Mon..Sun
+D: function () { return f.l().slice(0, 3); },
+
+// Day of month; 1..31
+j: function () { return jsdate.getDate(); },
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.humanize.relativeTime" id="apidoc.element.humanize.relativeTime">
+        function <span class="apidocSignatureSpan">humanize.</span>relativeTime
+        <span class="apidocSignatureSpan">(timestamp)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">relativeTime = function (timestamp) {
+  timestamp = (timestamp === undefined) ? humanize.time() : timestamp;
+
+  var currTime = humanize.time();
+  var timeDiff = currTime - timestamp;
+
+  // within 2 seconds
+  if (timeDiff &#x3c; 2 &#x26;&#x26; timeDiff &#x3e; -2) {
+    return (timeDiff &#x3e;= 0 ? &#x27;just &#x27; : &#x27;&#x27;) + &#x27;now&#x27;;
+  }
+
+  // within a minute
+  if (timeDiff &#x3c; 60 &#x26;&#x26; timeDiff &#x3e; -60) {
+    return (timeDiff &#x3e;= 0 ? Math.floor(timeDiff) + &#x27; seconds ago&#x27; : &#x27;in &#x27; + Math.floor(-timeDiff) + &#x27; seconds&#x27;);
+  }
+
+  // within 2 minutes
+  if (timeDiff &#x3c; 120 &#x26;&#x26; timeDiff &#x3e; -120) {
+    return (timeDiff &#x3e;= 0 ? &#x27;about a minute ago&#x27; : &#x27;in about a minute&#x27;);
+  }
+
+  // within an hour
+  if (timeDiff &#x3c; 3600 &#x26;&#x26; timeDiff &#x3e; -3600) {
+    return (timeDiff &#x3e;= 0 ? Math.floor(timeDiff / 60) + &#x27; minutes ago&#x27; : &#x27;in &#x27; + Math.floor(-timeDiff / 60) + &#x27; minutes&#x27;);
+  }
+
+  // within 2 hours
+  if (timeDiff &#x3c; 7200 &#x26;&#x26; timeDiff &#x3e; -7200) {
+    return (timeDiff &#x3e;= 0 ? &#x27;about an hour ago&#x27; : &#x27;in about an hour&#x27;);
+  }
+
+  // within 24 hours
+  if (timeDiff &#x3c; 86400 &#x26;&#x26; timeDiff &#x3e; -86400) {
+    return (timeDiff &#x3e;= 0 ? Math.floor(timeDiff / 3600) + &#x27; hours ago&#x27; : &#x27;in &#x27; + Math.floor(-timeDiff / 3600) + &#x27; hours&#x27;);
+  }
+
+  // within 2 days
+  var days2 = 2 * 86400;
+  if (timeDiff &#x3c; days2 &#x26;&#x26; timeDiff &#x3e; -days2) {
+    return (timeDiff &#x3e;= 0 ? &#x27;1 day ago&#x27; : &#x27;in 1 day&#x27;);
+  }
+
+  // within 29 days
+  var days29 = 29 * 86400;
+  if (timeDiff &#x3c; days29 &#x26;&#x26; timeDiff &#x3e; -days29) {
+    return (timeDiff &#x3e;= 0 ? Math.floor(timeDiff / 86400) + &#x27; days ago&#x27; : &#x27;in &#x27; + Math.floor(-timeDiff / 86400) + &#x27; days&#x27;);
+  }
+
+  // within 60 days
+  var days60 = 60 * 86400;
+  if (timeDiff &#x3c; days60 &#x26;&#x26; timeDiff &#x3e; -days60) {
+    return (timeDiff &#x3e;= 0 ? &#x27;about a month ago&#x27; : &#x27;in about a month&#x27;);
+  }
+
+  var currTimeYears = parseInt(humanize.date(&#x27;Y&#x27;, currTime), 10);
+  var timestampYears = parseInt(humanize.date(&#x27;Y&#x27;, timestamp), 10);
+  var currTimeMonths = currTimeYears * 12 + parseInt(humanize.date(&#x27;n&#x27;, currTime), 10);
+  var timestampMonths = timestampYears * 12 + parseInt(humanize.date(&#x27;n&#x27;, timestamp), 10);
+
+  // within a year
+  var monthDiff = currTimeMonths - timestampMonths;
+  if (monthDiff &#x3c; 12 &#x26;&#x26; monthDiff &#x3e; -12) {
+    return (monthDiff &#x3e;= 0 ? monthDiff + &#x27; months ago&#x27; : &#x27;in &#x27; + (-monthDiff) + &#x27; months&#x27;);
+  }
+
+  var yearDiff = currTimeYears - timestampYears;
+  if (yearDiff &#x3c; 2 &#x26;&#x26; yearDiff &#x3e; -2) {
+    return (yearDiff &#x3e;= 0 ? &#x27;a year ago&#x27; : &#x27;in a year&#x27;);
+  }
+
+  return (yearDiff &#x3e;= 0 ? yearDiff + &#x27; years ago&#x27; : &#x27;in &#x27; + (-yearDiff) + &#x27; years&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+####humanize.numberFormat(number [, decimals = 2, decPoint = &#x27;.&#x27;, thousandsSep = &#x27;,&#x27;])####
+Format a number to have decimal significant decimal places, using decPoint as the decimal separator, and thousandsSep as thousands
+ separater
+
+####humanize.naturalDay(timestamp [, format = &#x27;Y-m-d&#x27;])####
+Returns &#x27;today&#x27;, &#x27;tomorrow&#x27; or &#x27;yesterday&#x27;, as appropriate, otherwise format the date using the passed
+ format with humanize.date()
+
+####humanize.<span class="apidocCodeKeywordSpan">relativeTime</span>(timestamp)####
+Returns a relative time to the current time, seconds as the most granular up to years to the least granular.
+
+####humanize.ordinal(integer)####
+Converts a number into its [ordinal representation](http://en.wikipedia.org/wiki/Ordinal_number_\(linguistics\)).
+
+####humanize.filesize(filesize [, kilo = 1024, decimals = 2, decPoint = &#x27;.&#x27;, thousandsSep = &#x27;,&#x27;]) ####
+Converts a byte count to a human readable value using kilo as the basis, and numberFormat formatting
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.humanize.time" id="apidoc.element.humanize.time">
+        function <span class="apidocSignatureSpan">humanize.</span>time
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">time = function () {
+  return new Date().getTime() / 1000;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+## Functions available: ##
+
+####humanize.noConflict()####
+Give control of the &#x22;humanize&#x22; variable back to its previous owner. Returns a reference to the humanize object.
+
+####humanize.<span class="apidocCodeKeywordSpan">time</span>()####
+Retrieves the current time in seconds
+
+####humanize.date(format [, timestamp / JS Date Object = new Date()])####
+This is a port of [php.js date](http://phpjs.org/functions/date:380) and behaves exactly like [PHP&#x27;s date](http://php.net/manual
+/en/function.date.php)
+
+####humanize.numberFormat(number [, decimals = 2, decPoint = &#x27;.&#x27;, thousandsSep = &#x27;,&#x27;])####
+Format a number to have decimal significant decimal places, using decPoint as the decimal separator, and thousandsSep as thousands
+ separater
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.humanize.truncatechars" id="apidoc.element.humanize.truncatechars">
+        function <span class="apidocSignatureSpan">humanize.</span>truncatechars
+        <span class="apidocSignatureSpan">(string, length)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">truncatechars = function (string, length) {
+  if (string.length &#x3c;= length) { return string; }
+  return string.substr(0, length) + &#x27;…&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+####humanize.linebreaks(string)####
+Converts a string&#x27;s newlines into properly formatted html ie. one new line -&#x3e; br, two new lines -&#x3e; p, entire thing
+ wrapped in p
+
+####humanize.nl2br(string)####
+Converts a string&#x27;s newlines into br&#x27;s
+
+####humanize.<span class="apidocCodeKeywordSpan">truncatechars</span>(string, length)####
+Truncates a string to length-1 and appends &#x27;…&#x27;. If string is shorter than length, then no-op
+
+####humanize.truncatewords(string, numWords)####
+Truncates a string to only include the first numWords words and appends &#x27;…&#x27;. If string has fewer words than newWords,
+then no-op
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.humanize.truncatewords" id="apidoc.element.humanize.truncatewords">
+        function <span class="apidocSignatureSpan">humanize.</span>truncatewords
+        <span class="apidocSignatureSpan">(string, numWords)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">truncatewords = function (string, numWords) {
+  var words = string.split(&#x27; &#x27;);
+  if (words.length &#x3c; numWords) { return string; }
+  return words.slice(0, numWords).join(&#x27; &#x27;) + &#x27;…&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+####humanize.nl2br(string)####
+Converts a string&#x27;s newlines into br&#x27;s
+
+####humanize.truncatechars(string, length)####
+Truncates a string to length-1 and appends &#x27;…&#x27;. If string is shorter than length, then no-op
+
+####humanize.<span class="apidocCodeKeywordSpan">truncatewords</span>(string, numWords)####
+Truncates a string to only include the first numWords words and appends &#x27;…&#x27;. If string has fewer words than newWords,
+then no-op
+...</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
